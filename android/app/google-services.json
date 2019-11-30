@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "820519201156",
+    "firebase_url": "https://takenote-4cfcc.firebaseio.com",
+    "project_id": "takenote-4cfcc",
+    "storage_bucket": "takenote-4cfcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820519201156:android:a5a3912e19c1d835ce95d1",
+        "android_client_info": {
+          "package_name": "com.example.take_note"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820519201156-on16k4p0mb30v6j29ip2pvec2mksiv01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEi5vmZFDEb8D13so9iXjacUqT6YJr8Aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820519201156-on16k4p0mb30v6j29ip2pvec2mksiv01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

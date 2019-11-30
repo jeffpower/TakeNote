@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:take_note/database/database_helper.dart';
-import 'package:take_note/models/note.dart';
+import 'package:take_note/core/models/note.dart';
 
 class Editor extends StatefulWidget {
   final String appBarTitle;

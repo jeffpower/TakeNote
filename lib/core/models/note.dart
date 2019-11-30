@@ -2,6 +2,7 @@ class Note {
   String _title;
   String _description;
   int _id;
+  String _stringId;
   int _priority;
   String _date;
   Note(this._title, this._date, this._priority, [this._description]);
@@ -10,9 +11,11 @@ class Note {
   String get title => _title;
   String get description => _description;
   String get date => _date;
+  String get stringId => _stringId;
 
   int get id => _id;
   int get priority => _priority;
+
 
   set title(String newTitle) {
     this._title = newTitle;
@@ -32,6 +35,10 @@ class Note {
     }
   }
 
+  // set stringId(String id) {
+  //   this._stringId = id;
+  // }
+
    Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
 
@@ -45,7 +52,8 @@ class Note {
     return map;
   }
 
-  Note.fromMap(Map<String, dynamic> map) {
+  Note.fromMap(Map<String, dynamic> map, [String idString]) {
+    this._stringId = idString;
     this._id = map['id'];
     this._title = map['title'];
     this._description = map['description'];

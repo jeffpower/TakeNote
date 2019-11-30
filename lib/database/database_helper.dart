@@ -4,7 +4,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:take_note/util/constants.dart';
-import 'package:take_note/models/note.dart';
+import 'package:take_note/core/models/note.dart';
 
 class DatabaseHelper {
   
