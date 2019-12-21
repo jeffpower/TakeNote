@@ -1,6 +1,7 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:take_note/database/database_helper.dart';
+import 'package:take_note/core/services/database_helper.dart';
 import 'package:take_note/core/models/note.dart';
 
 class Editor extends StatefulWidget {
@@ -130,6 +131,18 @@ class _EditorState extends State<Editor> {
                         width: 5.0,
                       ),
                     ],
+                  ),
+                ),
+
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: AdmobBanner(
+                      adUnitId: 'ca-app-pub-7063490524190385/1261988279',
+                      adSize: AdmobBannerSize.LEADERBOARD,
+                      
+                    ),
                   ),
                 )
               ],

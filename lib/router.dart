@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:take_note/screens/cloud_view.dart';
-import 'package:take_note/screens/editor.dart';
-import 'package:take_note/screens/home_screen.dart';
-import 'package:take_note/screens/splash_screen.dart';
+import 'package:take_note/ui/views/cloud_view.dart';
+import 'package:take_note/ui/views/editor.dart';
+import 'package:take_note/ui/views/home_screen.dart';
+import 'package:take_note/ui/views/splash_screen.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {

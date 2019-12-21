@@ -5,7 +5,7 @@ import 'package:take_note/core/models/note.dart';
 import 'package:take_note/core/viewmodels/cloud_model.dart';
 import 'package:take_note/core/viewmodels/documents_model.dart';
 import 'package:take_note/locator.dart';
-import 'package:take_note/widgets/item.dart';
+import 'package:take_note/ui/widgets/item.dart';
 
 class CloudView extends StatefulWidget {
   @override

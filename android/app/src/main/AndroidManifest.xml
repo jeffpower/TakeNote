@@ -10,6 +10,10 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="TakeNote"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data 
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7063490524190385~2657996272" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -34,6 +34,8 @@ dependencies:
   firebase_database: ^3.0.9
   provider: ^3.2.0
   get_it: ^3.0.3
+  admob_flutter: ^0.3.4
+  google_sign_in: ^4.0.16
 
 dev_dependencies:
   flutter_test:
@@ -51,17 +53,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # assets:
-  #   - assets/images/
+  assets:
+    - assets/images/
   
-  # fonts:
-  #   - family: MuseoSans
-  #     fonts:
-  #       - asset: assets/fonts/MuseoSans100.otf
-  #         weight: 100
-  #       - asset: assets/fonts/MuseoSans300.otf
-  #         weight: 300
-  #       - asset: assets/fonts/MuseoSans500.otf
-  #         weight: 500
-  #       - asset: assets/fonts/MuseoSans700.otf
-  #         weight: 700
+  fonts:
+    - family: MuseoSans
+      fonts:
+        - asset: assets/fonts/MuseoSans100.otf
+          weight: 100
+        - asset: assets/fonts/MuseoSans300.otf
+          weight: 300
+        - asset: assets/fonts/MuseoSans500.otf
+          weight: 500
+        - asset: assets/fonts/MuseoSans700.otf
+          weight: 700
