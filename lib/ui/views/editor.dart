@@ -134,17 +134,17 @@ class _EditorState extends State<Editor> {
                   ),
                 ),
 
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: AdmobBanner(
-                      adUnitId: 'ca-app-pub-7063490524190385/1261988279',
-                      adSize: AdmobBannerSize.LEADERBOARD,
+                // Align(
+                //   alignment: Alignment.bottomCenter,
+                //   child: Padding(
+                //     padding: EdgeInsets.all(10.0),
+                //     child: AdmobBanner(
+                //       adUnitId: 'ca-app-pub-7063490524190385/1261988279',
+                //       adSize: AdmobBannerSize.LEADERBOARD,
                       
-                    ),
-                  ),
-                )
+                //     ),
+                //   ),
+                // )
               ],
             ),
           ),

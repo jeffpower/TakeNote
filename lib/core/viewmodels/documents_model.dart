@@ -9,20 +9,20 @@ import 'package:take_note/locator.dart';
 class DocumentModel extends BaseModel {
   final AuthUtils _authUtils = locator<AuthUtils>();
 
-  Stream<QuerySnapshot> getDocuments() {
+  Stream<QuerySnapshot> getDocuments(String userId) {
     setState(Status.BUSY);
 
-    var success =  _authUtils.streamDataCollection();
+    var success =  _authUtils.streamDataCollection(userId);
 
     setState(Status.IDLE);
     return success;
 
   }
 
-  Future<DocumentReference> addDocument(Map data) async {
+  Future<DocumentReference> addDocument(Map data, String userId) async {
     setState(Status.BUSY);
 
-    var success = await _authUtils.addDocument(data);
+    var success = await _authUtils.addDocument(data, userId);
 
     setState(Status.IDLE);
     return success;

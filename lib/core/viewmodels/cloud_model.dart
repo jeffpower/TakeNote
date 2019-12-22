@@ -9,10 +9,10 @@ import 'package:take_note/locator.dart';
 class CloudModel extends BaseModel {
   final AuthUtils _authUtils = locator<AuthUtils>();
 
-  Stream<QuerySnapshot> getDocuments() {
+  Stream<QuerySnapshot> getDocuments(String userId) {
     setState(Status.BUSY);
 
-    var success =  _authUtils.streamDataCollection();
+    var success =  _authUtils.streamDataCollection(userId);
 
     setState(Status.IDLE);
     return success;

@@ -1,19 +1,34 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:async';
 import 'package:take_note/core/models/note.dart';
+
+import 'package:take_note/core/util/preferences.dart';
 import 'package:take_note/core/viewmodels/cloud_model.dart';
 import 'package:take_note/core/viewmodels/documents_model.dart';
 import 'package:take_note/locator.dart';
 import 'package:take_note/ui/widgets/item.dart';
+import 'package:take_note/core/constants/constants.dart';
+
 
 class CloudView extends StatefulWidget {
+  CloudView({
+    @required this.userId
+  });
+
+  final String userId;
   @override
   _CloudViewState createState() => _CloudViewState();
 }
 
 class _CloudViewState extends State<CloudView> {
   List<Note> notesList;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +38,14 @@ class _CloudViewState extends State<CloudView> {
     double deviceWidth = size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('C l o u d'),
+        title: Text('Synced files'),
         elevation: 1.0,
       ),
       body: Container(
         height: deviceHeight,
         width: deviceWidth,
         child: StreamBuilder(
-          stream: model.getDocuments(),
+          stream: model.getDocuments(widget.userId),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasData) {
               notesList = snapshot.data.documents

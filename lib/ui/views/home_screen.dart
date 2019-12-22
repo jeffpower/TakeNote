@@ -3,11 +3,15 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:dynamic_theme/theme_switcher_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:take_note/core/constants/constants.dart';
 import 'package:take_note/core/models/note.dart';
 import 'package:take_note/core/models/status.dart';
 import 'package:take_note/core/services/auth_utils.dart';
+import 'package:take_note/core/util/preferences.dart';
 import 'package:take_note/core/viewmodels/documents_model.dart';
 import 'package:take_note/ui/views/cloud_view.dart';
+import 'package:take_note/ui/views/settings_view.dart';
+
 import 'package:take_note/ui/views/editor.dart';
 import 'package:take_note/ui/widgets/item.dart';
 import 'package:take_note/core/services/database_helper.dart';
@@ -15,6 +19,11 @@ import 'package:provider/provider.dart';
 import 'package:take_note/locator.dart';
 
 class HomeScreen extends StatefulWidget {
+  HomeScreen({
+    @required this.userId
+  });
+
+  final String userId;
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -30,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       notesList = List<Note>();
       updateListView();
     }
+    
     super.initState();
   }
 
@@ -40,15 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
     double deviceHeight = size.height;
     double deviceWidth = size.width;
 
-    return
-        // ChangeNotifierProvider<DocumentModel>(
-        //   builder: (context) => locator<DocumentModel>(),
-        //   child: Consumer<DocumentModel>(
-        //     builder: (context, model, child) =>
-        Scaffold(
+    return Scaffold(
       appBar: AppBar(
         elevation: 1.0,
-        title: Text('T a k e N o t e'),
+        title: Text('Take Note'),
         leading: IconButton(
           icon: Icon(
             Icons.menu,
@@ -89,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.pop(context);
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return CloudView();
+                                    return CloudView(userId: widget.userId);
                                   }));
                                 },
                                 leading: Icon(Icons.cloud),
@@ -97,6 +102,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     style: TextStyle(fontSize: 20.0)),
                               ),
                               ListTile(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                   Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return SettingScreen();
+                                  }));
+                                },
                                 leading: Icon(Icons.settings),
                                 title: Text('Settings',
                                     style: TextStyle(fontSize: 20.0)),
@@ -193,10 +205,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 ListTile(
                                                   onTap: () async {
+                                                    String userId = await getPreference(Constants.USER_ID);
                                                     var success = await model
                                                         .addDocument(this
                                                             .notesList[position]
-                                                            .toMap());
+                                                            .toMap(), userId);
                                                     if (success.documentID !=
                                                         null) {
                                                       Navigator.pop(context);

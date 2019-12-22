@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:take_note/core/models/status.dart';
 import 'package:take_note/core/services/auth_utils.dart';
+import 'package:take_note/core/util/preferences.dart';
 import 'package:take_note/core/viewmodels/base_model.dart';
 import 'package:take_note/locator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:take_note/core/constants/constants.dart';
 import 'package:path_provider/path_provider.dart';
 
 class LoginModel extends BaseModel {
@@ -32,6 +34,10 @@ class LoginModel extends BaseModel {
     final FirebaseUser currentUser = await _mAuth.currentUser();
     assert(user.uid == currentUser.uid);
 
+    setPreference(Constants.USER_ID, user.uid);
+    setPreference(Constants.USER_NAME, user.displayName);
+    setPreference(Constants.EMAIL, user.email);
+
     return 'Successfully signed in - $user';
 
   }
@@ -40,7 +46,7 @@ class LoginModel extends BaseModel {
 
   void signOutGoogle() async {
     await googleSignIn.signOut();
-
+    clearPreferences();
     print('User signed out');
   }
 

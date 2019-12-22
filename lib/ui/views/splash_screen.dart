@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:take_note/core/constants/constants.dart';
+import 'package:take_note/core/util/preferences.dart';
 import 'package:take_note/ui/views/home_screen.dart';
 import 'package:take_note/ui/views/login_view.dart';
 
@@ -9,14 +11,29 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacement(context,
+    Timer(Duration(seconds: 3), () async {
+      String userId = await getPreference(Constants.USER_ID);
+      print(userId);
+      print(userId);
+      print(userId);
+      if(userId != null) {
+        Navigator.pushReplacement(context, 
+          MaterialPageRoute(builder: (BuildContext context) {
+            return HomeScreen(
+              userId : userId
+            );
+          }));
+      } else {
+         Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) {
         return LoginScreen();
       }));
+      }
+     
     });
     super.initState();
   }
